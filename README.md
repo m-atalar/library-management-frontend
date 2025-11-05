@@ -1,36 +1,158 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kütüphane Yönetim Sistemi - Frontend
 
-## Getting Started
+Bu proje, **BDD (Behavior Driven Development)** yaklaşımı ile geliştirilmiş bir kütüphane yönetim sistemi frontend uygulamasıdır.
 
-First, run the development server:
+## Proje Hakkında
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Bu proje, Yazılım Gerçekleme dersi kapsamında **TDD/BDD** metodolojisini uygulayarak geliştirilmiştir. Proje, Ruby on Rails API backend'ine bağlanarak kitap listesini görüntüleyen bir Next.js uygulamasıdır.
+
+**Mentorlük:** Nurettin Şenyer ve Ömer Durmuş
+
+## Teknoloji Stack
+
+- **Frontend Framework:** Next.js 16 (React 19)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Testing:** Cypress + Cucumber (BDD)
+- **Test Preprocessor:** @badeball/cypress-cucumber-preprocessor
+- **Backend API:** Ruby on Rails 8 (API-only)
+
+## BDD Yaklaşımı
+
+Bu projede **Red-Green-Refactor** döngüsü uygulanmıştır:
+
+### 1. RED Phase (Kıpkırmızı - %100 Fail)
+- Önce Gherkin formatında test senaryoları yazıldı
+- Kod yazılmadan testler çalıştırıldı
+- Beklendiği gibi tüm testler başarısız oldu (%100 fail)
+
+### 2. GREEN Phase (Yemyeşil - %100 Success)
+- Frontend kodu geliştirildi
+- Testler tekrar çalıştırıldı
+- Tüm testler başarılı oldu (%100 success)
+
+## Test Senaryosu
+
+```gherkin
+Feature: Kitap Listesi Görüntüleme
+  Kütüphane yönetim sisteminde kullanıcılar kitapları görüntüleyebilmelidir
+
+  Scenario: Kullanıcı ana sayfada kitap listesini görüntüler
+    Given kullanıcı ana sayfada
+    When sayfa yüklendiğinde
+    Then kitap listesi görünür olmalı
+    And en az 1 kitap gösterilmeli
+    And her kitap için başlık gösterilmeli
+    And her kitap için yazar gösterilmeli
+    And her kitap için açıklama gösterilmeli
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Kurulum
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Gereksinimler
+- Node.js 18+
+- npm veya yarn
+- Backend API (Ruby on Rails) çalışır durumda olmalı
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Adımlar
 
-## Learn More
+1. Projeyi klonlayın:
+```bash
+git clone [repository-url]
+cd library-frontend
+```
 
-To learn more about Next.js, take a look at the following resources:
+2. Bağımlılıkları yükleyin:
+```bash
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Backend API'yi çalıştırın (port 3000):
+```bash
+# Backend dizininde
+rails server
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Frontend'i çalıştırın (port 3001):
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+5. Tarayıcıda açın: http://localhost:3001
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Test Çalıştırma
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Cypress Testlerini Çalıştırma
+
+Headless modda (CI/CD için):
+```bash
+npm run cypress:run
+```
+
+Interaktif modda:
+```bash
+npm run cypress:open
+```
+
+## Proje Yapısı
+
+```
+library-frontend/
+├── app/
+│   ├── page.tsx              # Ana sayfa (kitap listesi)
+│   └── layout.tsx            # Root layout
+├── cypress/
+│   ├── e2e/
+│   │   ├── books.feature     # Gherkin test senaryosu
+│   │   └── books.ts          # Step definitions
+│   ├── support/
+│   │   ├── e2e.ts
+│   │   └── commands.ts
+│   ├── videos/               # Test videoları
+│   └── screenshots/          # Test ekran görüntüleri
+├── cypress.config.ts         # Cypress konfigürasyonu
+└── package.json
+```
+
+## Özellikler
+
+- API'den kitap listesini çekme
+- Responsive tasarım (Tailwind CSS)
+- Loading ve error state'leri
+- Kitap detayları (başlık, yazar, açıklama, kategoriler, ISBN, yayın tarihi)
+- E2E test coverage (%100)
+- BDD yaklaşımı ile geliştirme
+
+## Test Sonuçları
+
+### RED Phase (İlk Test)
+- **Test Sayısı:** 1
+- **Passing:** 0
+- **Failing:** 1
+- **Sonuç:** %100 FAIL ✅
+
+### GREEN Phase (İkinci Test)
+- **Test Sayısı:** 1
+- **Passing:** 1
+- **Failing:** 0
+- **Sonuç:** %100 SUCCESS ✅
+
+## Demo Video
+
+Test çalışma videosuna [buradan](cypress/videos/) ulaşabilirsiniz.
+
+## API Endpoints
+
+Backend API endpoints:
+- `GET /api/v1/books` - Tüm kitapları listele
+- `GET /api/v1/books/:id` - Belirli bir kitabı getir
+
+## Geliştirici
+
+Bu proje, Yazılım Gerçekleme dersi kapsamında geliştirilmiştir.
+
+**Mentorlük:** Nurettin Şenyer ve Ömer Durmuş
+
+## Lisans
+
+Bu proje eğitim amaçlıdır.
