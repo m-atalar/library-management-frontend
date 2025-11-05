@@ -153,7 +153,8 @@ Backend API endpoints:
 
 - **Frontend Repository:** [https://github.com/m-atalar/library-management-frontend](https://github.com/m-atalar/library-management-frontend)
 - **Backend Repository:** [https://github.com/m-atalar/library-management-api](https://github.com/m-atalar/library-management-api)
-- **Demo Video:** [https://youtu.be/vVzLksRlI1w](https://youtu.be/vVzLksRlI1w)
+- **Demo Video (YouTube):** [https://youtu.be/vVzLksRlI1w](https://youtu.be/vVzLksRlI1w)
+- **LinkedIn Paylaşımı:** [https://www.linkedin.com/posts/mustafa-atalar-ba5300299_k%C3%BCt%C3%BCphane-y%C3%B6netim-sistemi-bdd-ile-frontend-share-7391901400898662402-R6DT](https://www.linkedin.com/posts/mustafa-atalar-ba5300299_k%C3%BCt%C3%BCphane-y%C3%B6netim-sistemi-bdd-ile-frontend-share-7391901400898662402-R6DT)
 
 ## Geliştirici
 
