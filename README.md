@@ -58,8 +58,8 @@ Feature: Kitap Listesi Görüntüleme
 
 1. Projeyi klonlayın:
 ```bash
-git clone [repository-url]
-cd library-frontend
+git clone https://github.com/m-atalar/library-management-frontend.git
+cd library-management-frontend
 ```
 
 2. Bağımlılıkları yükleyin:
@@ -139,13 +139,21 @@ library-frontend/
 
 ## Demo Video
 
-Test çalışma videosuna [buradan](cypress/videos/) ulaşabilirsiniz.
+📹 **YouTube Demo:** [https://youtu.be/vVzLksRlI1w](https://youtu.be/vVzLksRlI1w)
+
+Test çalışma videosuna yerel olarak [buradan](cypress/videos/) da ulaşabilirsiniz.
 
 ## API Endpoints
 
 Backend API endpoints:
 - `GET /api/v1/books` - Tüm kitapları listele
 - `GET /api/v1/books/:id` - Belirli bir kitabı getir
+
+## Repository Linkleri
+
+- **Frontend Repository:** [https://github.com/m-atalar/library-management-frontend](https://github.com/m-atalar/library-management-frontend)
+- **Backend Repository:** [https://github.com/m-atalar/library-management-api](https://github.com/m-atalar/library-management-api)
+- **Demo Video:** [https://youtu.be/vVzLksRlI1w](https://youtu.be/vVzLksRlI1w)
 
 ## Geliştirici
 
